@@ -422,7 +422,7 @@ class GP(object):
 #    logP = -0.5 * r.T * np.mat(LA.cho_solve(self.choFactor[useK],r,check_finite=False)) - 0.5 * self.logdetK[useK] - (r.size/2.) * np.log(2*np.pi)
     logP = -0.5 * np.dot(r.T,LA.cho_solve(self.choFactor[useK],r,check_finite=False)) - 0.5 * self.logdetK[useK] - (r.size/2.) * np.log(2*np.pi)
         
-    return np.float(logP)
+    return float(logP)
 
   def logLikelihood_toeplitz(self,p):
     """
@@ -460,7 +460,7 @@ class GP(object):
     #calculate the log likelihood
     logP = -0.5 * r.T * self.teop_sol - 0.5 * (logdetK + logdetA2) - (r.size/2.) * np.log(2*np.pi)
     
-    return np.float(logP)
+    return float(logP)
 
   def logLikelihood_cholesky_banded(self,p):
     """
@@ -501,7 +501,7 @@ class GP(object):
 #    logP = -0.5 * r.T * np.mat(LA.cho_solve_banded((self.choFactor[useK],False),r)) - 0.5 * self.logdetK[useK] - (r.size/2.) * np.log(2*np.pi)
     logP = -0.5 * np.dot(r.T,LA.cho_solve_banded((self.choFactor[useK],False),r,check_finite=False)) - 0.5 * self.logdetK[useK] - (r.size/2.) * np.log(2*np.pi)
 
-    return np.float(logP)
+    return float(logP)
 
   def logLikelihood_white(self,p):
     "Function to calculate the log likeihood"
